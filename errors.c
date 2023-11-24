@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:08:15 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 18:08:16 by randre           ###   ########.fr       */
+/*   Created: 2023/11/20 22:39:41 by randre            #+#    #+#             */
+/*   Updated: 2023/11/20 22:39:41 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+int	error_synthax(char *str)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-	{
-		ft_printf("Error, aborting...");
+	if (!ft_atol(str) && *str != '0')
 		return (1);
-	}
-	if (argc == 2)
+	return (0);
+}
+
+
+void	free_stack(t_stack_node **stack)
+{
+	t_stack_node	*tmp;
+	t_stack_node	*current;
+
+	if (!stack)
+		return ;
+	current = *stack;
+	while (current)
 	{
-		argv = ft_split(argv[1], ' ');
-		init_stack(&a, argv);
+		tmp = current->next;
+		current->nbr = 0;
+		free(current);
+		current = tmp;
 	}
-	else
-		init_stack(&a, argv + 1);
-	if (!is_sorted(a))
-	{
-		if (stack_len(a) == 2)
-			sa(&a);
-		else if (stack_len(a) == 3)
-			sort_three
-	}
+	*stack = NULL;
+}
+
+void	errors_free(t_stack_node **a)
+{
+	free_stack(a);
+	ft_printf("Error\n");
+	exit(1);
 }

@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <stdbool.h>
 # include <limits.h>
+# include <stdlib.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
@@ -32,26 +33,44 @@ typedef struct s_stack_node
 // Operations
 
 /*				SWAP			*/
-void	sa(t_stack_node **a);
-void	sb(t_stack_node **b);
-void	ss(t_stack_node **a, t_stack_node **b);
+void			sa(t_stack_node **a);
+void			sb(t_stack_node **b);
+void			ss(t_stack_node **a, t_stack_node **b);
 
 /*				ROTATE			*/
-void	ra(t_stack_node **a);
-void	rb(t_stack_node **b);
-void	rr(t_stack_node **a, t_stack_node **b);
+void			ra(t_stack_node **a);
+void			rb(t_stack_node **b);
+void			rr(t_stack_node **a, t_stack_node **b);
 
 /*			REVERSE ROTATE		*/
-void	rra(t_stack_node **a);
-void	rrb(t_stack_node **b);
-void	rrr(t_stack_node **a, t_stack_node **b);
+void			rra(t_stack_node **a);
+void			rrb(t_stack_node **b);
+void			rrr(t_stack_node **a, t_stack_node **b);
 
 /*				PUSH			*/
-void	pa(t_stack_node **head_a, t_stack_node **head_b);
-void	pb(t_stack_node **head_a, t_stack_node **head_b);
+void			pa(t_stack_node **head_a, t_stack_node **head_b);
+void			pb(t_stack_node **head_a, t_stack_node **head_b);
+
+/*---------------------------------------------------------------*/
 
 // Utils
 
 t_stack_node	*find_last(t_stack_node *stack);
+long			ft_atol(const char *str);
+int				is_sorted(t_stack_node *a);
+int				stack_len(t_stack_node *a);
+
+// Errors
+
+int				error_synthax(char *str);
+void			errors_free(t_stack_node **a);
+void			free_stack(t_stack_node **stack);
+
+// Inits and nodes
+
+void			init_stack(t_stack_node **a, char **argv);
+void			append_node(t_stack_node **stack, int n);
+
+
 
 #endif

@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:08:15 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 18:08:16 by randre           ###   ########.fr       */
+/*   Created: 2023/11/24 18:56:10 by randre            #+#    #+#             */
+/*   Updated: 2023/11/24 18:56:10 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+int	is_sorted(t_stack_node *a)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
-	{
-		ft_printf("Error, aborting...");
+	if (!a)
 		return (1);
-	}
-	if (argc == 2)
+	while (a->next)
 	{
-		argv = ft_split(argv[1], ' ');
-		init_stack(&a, argv);
+		if (a->nbr < a->next->nbr)
+			a = a->next;
+		else
+			return (0);
 	}
-	else
-		init_stack(&a, argv + 1);
-	if (!is_sorted(a))
+	return (1);
+}
+
+int	stack_len(t_stack_node *a)
+{
+	int	i;
+
+	i = 0;
+	while (a->next)
 	{
-		if (stack_len(a) == 2)
-			sa(&a);
-		else if (stack_len(a) == 3)
-			sort_three
+		i++;
+		a = a->next;
 	}
+	i++;
+	return (i);
 }
