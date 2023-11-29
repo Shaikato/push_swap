@@ -1,44 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 18:08:15 by randre            #+#    #+#             */
-/*   Updated: 2023/11/29 11:44:02 by randre           ###   ########.fr       */
+/*   Created: 2023/11/20 22:15:08 by randre            #+#    #+#             */
+/*   Updated: 2023/11/29 10:35:53 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+static void	last_opt_handler(t_stack_node **a, t_stack_node *max)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (max->index == 0)
 	{
-		ft_printf("Error, aborting...");
-		return (1);
-	}
-	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		init_stack(&a, argv);
+		sa(a);
+		rra(a);
 	}
 	else
-		init_stack(&a, argv + 1);
-	if (!is_sorted(a))
+		rra(a);
+}
+
+void	sort_three(t_stack_node **a)
+{
+	t_stack_node	*min;
+	t_stack_node	*max;
+	
+	min = find_min(*a);
+	max = find_max(*a);
+	if (min->index == 0)
 	{
-		if (stack_len(a) == 2)
-			sa(&a);
-		else if (stack_len(a) == 3)
-			sort_three(a);
+		if (max->index == 2)
+			return ;
 		else
-			sort(a, b);
+		{
+			sa(a);
+			ra(a);
+		}
 	}
+	else if (min->index == 1)
+	{
+		if (max->index == 2)
+			sa(a);
+		else
+			ra(a);
+	}
+	else
+		last_opt_handler(a, max);
 }

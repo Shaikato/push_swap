@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:56:45 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 18:10:44 by randre           ###   ########.fr       */
+/*   Updated: 2023/11/29 10:21:34 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,38 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (val * i);
+}
+
+t_stack_node	*find_min(t_stack_node *stack)
+{
+	t_stack_node	*min;
+	
+	min = NULL;
+	if (!stack)
+		return (NULL);
+	min = stack;
+	while (stack->next)
+	{
+		if (stack->nbr < min->nbr)
+			min = stack;
+		stack = stack->next;
+	}
+	return (min);
+}
+
+t_stack_node	*find_max(t_stack_node *stack)
+{
+	t_stack_node	*max;
+	
+	max = NULL;
+	if (!stack)
+		return (NULL);
+	max = stack;
+	while (stack->next)
+	{
+		if (stack->nbr > min->nbr)
+			max = stack;
+		stack = stack->next;
+	}
+	return (max);
 }

@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:06:25 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 18:24:44 by randre           ###   ########.fr       */
+/*   Updated: 2023/11/29 10:21:54 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 }	t_stack_node;
 
-// Operations
+/*---------------------------Operations--------------------------*/
 
 /*				SWAP			*/
 void			sa(t_stack_node **a);
@@ -59,6 +59,8 @@ t_stack_node	*find_last(t_stack_node *stack);
 long			ft_atol(const char *str);
 int				is_sorted(t_stack_node *a);
 int				stack_len(t_stack_node *a);
+t_stack_node	*find_min(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack);
 
 // Errors
 
@@ -71,6 +73,8 @@ void			free_stack(t_stack_node **stack);
 void			init_stack(t_stack_node **a, char **argv);
 void			append_node(t_stack_node **stack, int n);
 
+// Sort
 
+void			sort_three(t_stack_node **a);
 
 #endif

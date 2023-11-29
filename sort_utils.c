@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 12:23:45 by randre            #+#    #+#             */
-/*   Updated: 2023/11/29 12:35:14 by randre           ###   ########.fr       */
+/*   Created: 2023/11/29 12:41:16 by randre            #+#    #+#             */
+/*   Updated: 2023/11/29 12:41:57 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_stack_node **a, t_stack_node **b)
+t_stack_node	*find_cheapest(t_stack_node *a, t_stack_node *b)
 {
-	pb(a, b);
-	pb(a, b);
+	
 }
