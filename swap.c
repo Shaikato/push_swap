@@ -16,7 +16,9 @@ static void	swap(t_stack_node **stack)
 {	
 	if(!*stack || !(*stack)->next)
 		return ;
+	(*stack)->index = 1;
 	*stack = (*stack)->next;
+	(*stack)->index = 0;
 	(*stack)->prev->prev = *stack;
 	if ((*stack)->next)
 		(*stack)->next->prev = (*stack)->prev;

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 t_stack_node	*find_last(t_stack_node *stack)
 {
