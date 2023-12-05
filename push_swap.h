@@ -48,8 +48,8 @@ void			rrb(t_stack_node **b);
 void			rrr(t_stack_node **a, t_stack_node **b);
 
 /*				PUSH			*/
-void			pa(t_stack_node **head_a, t_stack_node **head_b);
-void			pb(t_stack_node **head_a, t_stack_node **head_b);
+void			pa(t_stack_node **a, t_stack_node **b);
+void			pb(t_stack_node **a, t_stack_node **b);
 
 /*---------------------------------------------------------------*/
 
@@ -76,5 +76,6 @@ void			append_node(t_stack_node **stack, int n);
 // Sort
 
 void			sort_three(t_stack_node **a);
+void			sort(t_stack_node **a, t_stack_node **b);
 
 #endif

@@ -11,17 +11,18 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 t_stack_node	*find_last(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
 	while (stack->next)
+	{
 		stack = stack->next;
+	}
 	return (stack);
 }
-
-#include <limits.h>
 
 long	ft_atol(const char *str)
 {
@@ -56,7 +57,7 @@ t_stack_node	*find_min(t_stack_node *stack)
 	if (!stack)
 		return (NULL);
 	min = stack;
-	while (stack->next)
+	while (stack)
 	{
 		if (stack->nbr < min->nbr)
 			min = stack;
@@ -73,9 +74,9 @@ t_stack_node	*find_max(t_stack_node *stack)
 	if (!stack)
 		return (NULL);
 	max = stack;
-	while (stack->next)
+	while (stack)
 	{
-		if (stack->nbr > min->nbr)
+		if (stack->nbr > max->nbr)
 			max = stack;
 		stack = stack->next;
 	}

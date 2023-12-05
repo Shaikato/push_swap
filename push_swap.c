@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -37,8 +36,8 @@ int	main(int argc, char **argv)
 		if (stack_len(a) == 2)
 			sa(&a);
 		else if (stack_len(a) == 3)
-			sort_three(a);
+			sort_three(&a);
 		else
-			sort(a, b);
+			sort(&a, &b);
 	}
 }

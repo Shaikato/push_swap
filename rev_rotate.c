@@ -25,11 +25,11 @@ static void	reverse_rotate(t_stack_node **stack)
 	last->next = *stack;
 	(*stack)->prev = last;
 	(*stack)->index = 1;
-	stack++;
+	*stack = (*stack)->next;
 	while ((*stack)->next)
 	{
 		(*stack)->index += 1;
-		stack++;
+		*stack = (*stack)->next;
 	}
 	(*stack)->index += 1;
 }

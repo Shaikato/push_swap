@@ -12,32 +12,37 @@
 
 #include "push_swap.h"
 
-void	pa(t_stack_node **head_a, t_stack_node **head_b)
+void	push(t_stack_node **dst, t_stack_node **src)
 {
-	(*head_a)->prev = *head_b;
-	(*head_b)->next = *head_a;
-	(*head_a)->index++;
-	head_a++;
-	while ((*head_a)->next)
+	t_stack_node	*buff;
+
+	if (!*src)
+		return ;
+	buff = *src;
+	if (*src)
+		buff->prev = NULL;
+	*src = (*src)->next;
+	if (!*dst)
 	{
-		(*head_a)->index++;
-		head_a++;
+		*dst = buff;
+		buff->next = NULL;
 	}
-	(*head_a)->index++;
+	else
+	{
+		buff->next = *dst;
+		(*dst)->prev = buff;
+		*dst = buff;
+	}
+}
+
+void	pa(t_stack_node **a, t_stack_node **b)
+{
+	push(a, b);
 	ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **head_a, t_stack_node **head_b)
+void	pb(t_stack_node **a, t_stack_node **b)
 {
-	(*head_b)->prev = *head_a;
-	(*head_a)->next = *head_b;
-	(*head_b)->index++;
-	head_b++;
-	while ((*head_b)->next)
-	{
-		(*head_b)->index++;
-		head_b++;
-	}
-	(*head_b)->index++;
+	push(b, a);
 	ft_printf("pb\n");
 }

@@ -14,6 +14,8 @@
 
 void	sort(t_stack_node **a, t_stack_node **b)
 {
-	pb(a, b);
-	pb(a, b);
+	while(stack_len(*a) != 3)
+	{
+		pb(a, b);
+	}
 }

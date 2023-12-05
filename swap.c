@@ -20,6 +20,7 @@ static void	swap(t_stack_node **stack)
 	(*stack)->prev->prev = *stack;
 	if ((*stack)->next)
 		(*stack)->next->prev = (*stack)->prev;
+	(*stack)->prev->next = (*stack)->next;
 	(*stack)->next = (*stack)->prev;
 	(*stack)->prev = NULL;
 }
