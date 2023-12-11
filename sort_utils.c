@@ -16,3 +16,25 @@
 {
 	
 }*/
+
+void	update_index(t_stack_node *stack)
+{
+	int	i;
+	int	median;
+
+	if (!stack)
+		return ;
+	i = 0;
+	median = stack_len(stack) / 2;
+	while (stack)
+	{
+		if (i <= median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack->index = i;
+		++i;
+		stack = stack->next;
+	}
+}
+

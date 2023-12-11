@@ -12,6 +12,46 @@
 
 #include "push_swap.h"
 
+t_stack_node	*find_cheapest(t_stack_node **b)
+{
+	while (b)
+	{
+		if ((*b)->cheapest == true)
+			return (*b);
+		*b = (*b)->next;
+	}
+	return (NULL);
+}
+
+static void	set_cost(t_stack_node *a, t_stack_node *b)
+{
+	int				len_a;
+	int				len_b;
+	t_stack_node	*cheapest;
+
+	len_a = stack_len(a);
+	len_b = stack_len(b);
+	cheapest = b;
+	b->cheapest = true;
+	while (b)
+	{
+		b->cost = b->index;
+		if (!(b->above_median))
+			b->cost = len_b - (b->index);
+		if (b->target_node->above_median)
+			b->cost += b->target_node->index;
+		else
+			b->cost += len_a - b->target_node->index;
+		if (cheapest->cost > b->cost)
+		{
+			cheapest->cheapest = false;
+			cheapest = b;
+			cheapest->cheapest = true;
+		}
+		b = b->next;
+	}
+}
+
 static void	target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*match;
@@ -43,7 +83,14 @@ void	sort(t_stack_node **a, t_stack_node **b)
 {
 	while(stack_len(*a) != 3)
 		pb(a, b);
+	update_index(*a);
 	sort_three(a);
-	target_node(*a, *b);
-	
+	while (stack_len(*b) != 0)
+	{
+		update_index(*a);
+		update_index(*b);
+		target_node(*a, *b);
+		set_cost(*a, *b);
+		move_nodes(a, b);
+	}
 }

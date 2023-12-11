@@ -10,7 +10,8 @@ SRCS = errors.c \
 		sort_utils.c \
 		sort.c \
 		stack_utils.c \
-		swap.c
+		swap.c \
+		sort_commands.c
 
 OBJS = ${SRCS:.c=.o}
 PRINTF = ft_printf/libftprintf.a

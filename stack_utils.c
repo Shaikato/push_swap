@@ -31,6 +31,8 @@ int	stack_len(t_stack_node *a)
 {
 	int	i;
 
+	if (!a)
+		return (0);
 	i = 0;
 	while (a->next)
 	{

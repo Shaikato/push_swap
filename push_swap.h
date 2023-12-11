@@ -61,6 +61,8 @@ int				is_sorted(t_stack_node *a);
 int				stack_len(t_stack_node *a);
 t_stack_node	*find_min(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
+void			update_index(t_stack_node *stack);
+t_stack_node	*find_cheapest(t_stack_node **b);
 
 // Errors
 
@@ -77,5 +79,6 @@ void			append_node(t_stack_node **stack, int n);
 
 void			sort_three(t_stack_node **a);
 void			sort(t_stack_node **a, t_stack_node **b);
+void			move_nodes(t_stack_node **a, t_stack_node **b);
 
 #endif
