@@ -93,4 +93,6 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		set_cost(*a, *b);
 		move_nodes(a, b);
 	}
+	while (!is_sorted(*a))
+		ra(a);
 }
