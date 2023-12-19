@@ -12,41 +12,15 @@
 
 #include "push_swap.h"
 
-static void	last_opt_handler(t_stack_node **a, t_stack_node *max)
-{
-	if (max->index == 0)
-	{
-		sa(a);
-		rra(a);
-	}
-	else
-		rra(a);
-}
-
 void	sort_three(t_stack_node **a)
 {
-	t_stack_node	*min;
-	t_stack_node	*max;
-	
-	min = find_min(*a);
-	max = find_max(*a);
-	if (min->index == 0)
-	{
-		if (max->index == 2)
-			return ;
-		else
-		{
-			sa(a);
-			ra(a);
-		}
-	}
-	else if (min->index == 1)
-	{
-		if (max->index == 2)
-			sa(a);
-		else
-			ra(a);
-	}
-	else
-		last_opt_handler(a, max);
+	t_stack_node	*last;
+
+	last = find_last(*a);
+	if ((*a)->nbr > (*a)->next->nbr && (*a)->nbr > last->nbr)
+		ra(a);
+	else if ((*a)->next->nbr > (*a)->nbr && (*a)->next->nbr > last->nbr)
+		rra(a);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a);
 }

@@ -32,23 +32,25 @@ static void	reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 
 static void final_rotate_a(t_stack_node **a, t_stack_node *cheapest)
 {
-	while (*a != cheapest->target_node)
+	while (cheapest->target_node->index != 0)
 	{
 		if (cheapest->above_median)
 			ra(a);
 		else
 			rra(a);
+		update_index(*a);
 	}
 }
 
 static void final_rotate_b(t_stack_node **b, t_stack_node *cheapest)
 {
-	while (*b != cheapest)
+	while (cheapest->index != 0)
 	{
 		if (cheapest->above_median)
 			rb(b);
 		else
 			rrb(b);
+		update_index(*b);
 	}
 }
 
@@ -57,9 +59,9 @@ void	move_nodes(t_stack_node **a, t_stack_node **b)
 	t_stack_node	*cheapest;
 
 	cheapest = find_cheapest(b);
-	if ((*b)->above_median && (*b)->target_node->above_median)
+	if (!cheapest->above_median && !cheapest->target_node->above_median)
 		rotate_both(a, b, cheapest);
-	else if (!((*b)->above_median) && !((*b)->target_node->above_median))
+	else if (cheapest->above_median && cheapest->target_node->above_median)
 		reverse_rotate_both(a, b, cheapest);
 	final_rotate_a(a, cheapest);
 	final_rotate_b(b, cheapest);

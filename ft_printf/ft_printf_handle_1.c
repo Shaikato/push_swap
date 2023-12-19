@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include <unistd.h>
+#include "../libft/libft.h"
 
 int	ft_chandle(va_list args)
 {

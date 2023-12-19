@@ -15,6 +15,7 @@
 # include <stdbool.h>
 # include <limits.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 
@@ -67,12 +68,14 @@ t_stack_node	*find_cheapest(t_stack_node **b);
 // Errors
 
 int				error_synthax(char *str);
-void			errors_free(t_stack_node **a);
+void			errors_free(t_stack_node **a, char **s, int mal_bool);
 void			free_stack(t_stack_node **stack);
+int				invalid_number(char *s);
+int				check_limit(const char *str);
 
 // Inits and nodes
 
-void			init_stack(t_stack_node **a, char **argv);
+void			init_stack(t_stack_node **a, char **argv, int mal_bool);
 void			append_node(t_stack_node **stack, int n);
 
 // Sort

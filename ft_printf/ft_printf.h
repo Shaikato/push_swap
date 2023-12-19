@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdarg.h>
 
-unsigned int	ft_strlen(const char *str);
+//unsigned int	ft_strlen(const char *str);
 int				ft_printf(const char *str, ...);
 int				ft_isvalid_arg(const char c);
 int				ft_chandle(va_list args);

@@ -14,25 +14,27 @@
 
 t_stack_node	*find_cheapest(t_stack_node **b)
 {
-	while (b)
+	t_stack_node	*tick_b;
+	t_stack_node	*cheapest;
+
+	tick_b = *b;
+	cheapest = tick_b;
+	while (tick_b)
 	{
-		if ((*b)->cheapest == true)
-			return (*b);
-		*b = (*b)->next;
+		if (tick_b->cost < cheapest->cost)
+			cheapest = tick_b;
+		tick_b = tick_b->next;
 	}
-	return (NULL);
+	return (cheapest);
 }
 
 static void	set_cost(t_stack_node *a, t_stack_node *b)
 {
 	int				len_a;
 	int				len_b;
-	t_stack_node	*cheapest;
 
 	len_a = stack_len(a);
 	len_b = stack_len(b);
-	cheapest = b;
-	b->cheapest = true;
 	while (b)
 	{
 		b->cost = b->index;
@@ -42,19 +44,12 @@ static void	set_cost(t_stack_node *a, t_stack_node *b)
 			b->cost += b->target_node->index;
 		else
 			b->cost += len_a - b->target_node->index;
-		if (cheapest->cost > b->cost)
-		{
-			cheapest->cheapest = false;
-			cheapest = b;
-			cheapest->cheapest = true;
-		}
 		b = b->next;
 	}
 }
 
 static void	target_node(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node	*match;
 	t_stack_node	*buff_a;
 	long			match_val;
 
@@ -66,26 +61,29 @@ static void	target_node(t_stack_node *a, t_stack_node *b)
 		{
 			if (buff_a->nbr > b->nbr && buff_a->nbr < match_val)
 			{
-				match_val = buff_a->nbr;
-				match = buff_a;
+				match_val = (long)buff_a->nbr;
+				b->target_node = buff_a;
 			}
 			buff_a = buff_a->next;
 		}
 		if (match_val == LONG_MAX)
 			b->target_node = find_min(a);
-		else
-			b->target_node = match;
+		/*else
+			b->target_node = match;*/
 		b = b->next;
 	}
 }
 
 void	sort(t_stack_node **a, t_stack_node **b)
 {
+	t_stack_node	*smallest;
+
 	while(stack_len(*a) != 3)
 		pb(a, b);
 	update_index(*a);
+	update_index(*b);
 	sort_three(a);
-	while (stack_len(*b) != 0)
+	while (*b)
 	{
 		update_index(*a);
 		update_index(*b);
@@ -93,6 +91,11 @@ void	sort(t_stack_node **a, t_stack_node **b)
 		set_cost(*a, *b);
 		move_nodes(a, b);
 	}
-	while (!is_sorted(*a))
-		ra(a);
+	smallest = find_min(*a);
+	if (smallest->above_median)
+		while (*a != smallest)
+			ra(a);
+	else
+		while (*a != smallest)
+			rra(a);
 }

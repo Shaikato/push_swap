@@ -16,7 +16,7 @@ SRCS = errors.c \
 OBJS = ${SRCS:.c=.o}
 PRINTF = ft_printf/libftprintf.a
 LIBFT = libft/libft.a
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
@@ -31,10 +31,12 @@ ${NAME}: ${OBJS}
 
 clean:
 	make clean -C ft_printf
+	make clean -C libft
 	rm -rf $(OBJS)
 
 fclean: clean
 	make fclean -C ft_printf
+	make fclean -C libft
 	rm -rf $(NAME)
 
 re: fclean all
