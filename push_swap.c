@@ -65,4 +65,6 @@ int	main(int argc, char **argv)
 		else
 			sort(&a, &b);
 	}
+	free_stack(&a);
+	return (0);
 }
