@@ -52,6 +52,7 @@ static void	target_node(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*buff_a;
 	long			match_val;
+	t_stack_node	*match;
 
 	while (b)
 	{
@@ -62,14 +63,14 @@ static void	target_node(t_stack_node *a, t_stack_node *b)
 			if (buff_a->nbr > b->nbr && buff_a->nbr < match_val)
 			{
 				match_val = (long)buff_a->nbr;
-				b->target_node = buff_a;
+				match = buff_a;
 			}
 			buff_a = buff_a->next;
 		}
 		if (match_val == LONG_MAX)
 			b->target_node = find_min(a);
-		/*else
-			b->target_node = match;*/
+		else
+			b->target_node = match;
 		b = b->next;
 	}
 }

@@ -25,7 +25,6 @@ typedef struct s_stack_node
 	int					index;
 	int					cost;
 	bool				above_median;
-	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;

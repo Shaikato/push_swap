@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-/*t_stack_node	*find_cheapest(t_stack_node *a, t_stack_node *b)
-{
-	
-}*/
-
 void	update_index(t_stack_node *stack)
 {
 	int	i;
