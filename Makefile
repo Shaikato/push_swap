@@ -17,7 +17,7 @@ OBJS = ${SRCS:.c=.o}
 PRINTF = ft_printf/libftprintf.a
 LIBFT = libft/libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g
 
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

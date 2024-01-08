@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:35:50 by randre            #+#    #+#             */
-/*   Updated: 2024/01/08 11:27:04 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:42:33 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	init_stack(t_stack_node **a, char **argv, int mal_bool)
 		if (n > INT_MAX || n < INT_MIN)
 			errors_free(a, argv, mal_bool);
 		append_node(a, (int)n);
+		free(argv[i]);
 		i++;
 	}
+	free(argv);
 }
