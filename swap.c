@@ -6,15 +6,15 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:14:41 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 18:36:48 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:29:50 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	swap(t_stack_node **stack)
-{	
-	if(!*stack || !(*stack)->next)
+{
+	if (!*stack || !(*stack)->next)
 		return ;
 	*stack = (*stack)->next;
 	(*stack)->prev->prev = *stack;

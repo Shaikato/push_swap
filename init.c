@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:35:50 by randre            #+#    #+#             */
-/*   Updated: 2023/11/20 22:35:50 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:27:04 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,10 @@ void	handle_numeric(char **s, t_stack_node **a, int mal_bool)
 			errors_free(a, s, mal_bool);
 		while (s[i][j] != '\0')
 		{
-			if ((!ft_isdigit(s[i][j]) && (j != 0 && s[i][j] != '-')) || check_limit(s[i])
+			if ((!ft_isdigit(s[i][j]) && (j != 0 && s[i][j] != '-'))
+				|| check_limit(s[i])
 				|| ft_strlen(s[i]) >= 20)
-					errors_free(a, s, mal_bool);
+				errors_free(a, s, mal_bool);
 			j++;
 		}
 		j = 0;

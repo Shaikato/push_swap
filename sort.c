@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:23:45 by randre            #+#    #+#             */
-/*   Updated: 2023/11/29 12:35:14 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:29:11 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	sort(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*smallest;
 
-	while(stack_len(*a) != 3)
+	while (stack_len(*a) != 3)
 		pb(a, b);
 	update_index(*a);
 	update_index(*b);

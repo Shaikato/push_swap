@@ -6,7 +6,7 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:41:16 by randre            #+#    #+#             */
-/*   Updated: 2023/11/29 12:41:57 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:28:52 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	update_index(t_stack_node *stack)
 		stack = stack->next;
 	}
 }
-

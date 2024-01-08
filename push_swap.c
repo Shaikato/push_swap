@@ -6,11 +6,23 @@
 /*   By: randre <randre@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:08:15 by randre            #+#    #+#             */
-/*   Updated: 2023/11/29 11:44:02 by randre           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:32:13 by randre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_loop(char **argv, int i)
+{
+	while (argv[0][++i] != '\0')
+	{
+		if (!ft_isdigit(argv[0][i]))
+		{
+			write(2, "Error\n", 6);
+			exit (0);
+		}
+	}
+}
 
 void	handle_two(int argc, char **argv, t_stack_node **a)
 {
@@ -24,13 +36,9 @@ void	handle_two(int argc, char **argv, t_stack_node **a)
 		argv = ft_split(argv[1], ' ');
 		if (argv[0][0] == '-')
 			++i;
-		while (argv[0][++i] != '\0')
-			if (!ft_isdigit(argv[0][i]))
-			{
-				write(2, "Error\n", 6);
-				exit (0);
-			}
-		if (!argv[1] && !invalid_number(argv[0]) && !((ft_atol(argv[0]) > INT_MAX || ft_atol(argv[0]) < INT_MIN)))
+		ft_loop(argv, i);
+		if (!argv[1] && !invalid_number(argv[0]) 
+			&& !((ft_atol(argv[0]) > INT_MAX || ft_atol(argv[0]) < INT_MIN)))
 			exit (0);
 		else if (ft_atol(argv[0]) > INT_MAX || ft_atol(argv[0]) < INT_MIN)
 		{
